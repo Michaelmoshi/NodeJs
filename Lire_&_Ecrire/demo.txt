@@ -1,0 +1,2 @@
+Je n'ai pas d'outil de recherche web disponible dans cette conversation, donc je ne peux pas vérifier en temps réel quelle est la toute dernière version publiée de Chocolatey.
+D'après mes informations (arrêtées à janvier 2026), la version 2.7.x faisait partie des versions récentes de la branche stable de Chocolatey, mais je ne peux pas te garantir avec certitude que 2.7.3 est la dernière version à ce jour (juillet 2026) — il est tout à fait possible que des versions plus récentes (2.7.4, 2.8.x, etc.) soient sorties depuis.

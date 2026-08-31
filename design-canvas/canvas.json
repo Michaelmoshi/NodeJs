@@ -1,0 +1,22 @@
+{
+  "pages": [
+    { "id": "overview", "name": "Vue d'ensemble" },
+    { "id": "navbar", "name": "Navbar" },
+    { "id": "login", "name": "Connexion" },
+    { "id": "article-form", "name": "Formulaire article" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1000, "h": 820, "page": "overview" },
+
+    { "file": "Navbar-Light.dc.html", "x": 0, "y": 0, "w": 1200, "h": 480, "page": "navbar" },
+    { "file": "Navbar-Bold.dc.html", "x": 1320, "y": 0, "w": 1200, "h": 480, "page": "navbar" },
+    { "file": "Navbar-Minimal.dc.html", "x": 2640, "y": 0, "w": 1200, "h": 480, "page": "navbar" },
+
+    { "file": "Login-Centered.dc.html", "x": 0, "y": 0, "w": 900, "h": 900, "page": "login" },
+    { "file": "Login-Split.dc.html", "x": 1020, "y": 0, "w": 1200, "h": 800, "page": "login" },
+
+    { "file": "ArticleForm-Card.dc.html", "x": 0, "y": 0, "w": 900, "h": 1000, "page": "article-form" },
+    { "file": "ArticleForm-Accordion.dc.html", "x": 1020, "y": 0, "w": 900, "h": 1050, "page": "article-form" }
+  ],
+  "launch": { "view": "canvas", "page": "overview" }
+}

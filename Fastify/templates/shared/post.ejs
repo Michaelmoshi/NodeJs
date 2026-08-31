@@ -1,0 +1,12 @@
+<%# Ajouté avec Claude %>
+<div class="post-card">
+  <div class="post-ref">Fiche n° <%= String(post.id).padStart(3, '0') %></div>
+  <h5 class="post-title"><%= post.title %></h5>
+  <% const excerpt = post.content.split("\n\n")[0] %>
+  <p class="post-excerpt"><%= excerpt.length > 150 ? excerpt.substring(0, 150) + '...' : excerpt %></p>
+  <a href="/article/<%= post.id %>" class="post-link">
+    Lire la suite
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+</div>
+<%# Fin ajout Claude %>

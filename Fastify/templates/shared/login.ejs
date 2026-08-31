@@ -1,0 +1,48 @@
+<%- include('./header.ejs', {title: 'Se Connecter'}) %>
+
+<%# Ajouté avec Claude %>
+<div class="auth-wrap">
+  <div class="inner">
+
+    <div class="auth-header">
+      <div class="icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </div>
+      <div>
+        <h1>Bon retour</h1>
+        <div class="subtitle">Connecte-toi pour publier sur Mon Blog</div>
+      </div>
+    </div>
+
+    <div class="auth-card">
+      <% if (locals.error){ %>
+        <div class="alert-error">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <%= error %>
+        </div>
+      <% } %>
+
+      <form action="" method="post">
+        <div class="field">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" id="username" name="username" value="<%= locals.username ?? '' %>">
+        </div>
+
+        <div class="field">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password">
+        </div>
+
+        <button type="submit" class="btn-accent" style="width:100%;">Se connecter</button>
+      </form>
+    </div>
+
+    <div class="auth-footer">
+      <a href="/">← Retour à l'accueil</a>
+    </div>
+
+  </div>
+</div>
+<%# Fin ajout Claude %>
+
+<%- include('./footer.ejs') %>

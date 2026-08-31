@@ -1,0 +1,430 @@
+/* ===== Ajouté avec Claude =====
+   Direction : "le cahier du développeur" — un blog perso pensé comme un
+   cahier d'écolier (papier quadrillé, filet rouge de marge façon Seyès,
+   encre stylo-bille bleue) croisé avec un carnet de dev (IBM Plex Mono).
+   Clin d'oeil assumé au contenu réel du blog (les blagues de Toto, le
+   Toto des blagues françaises = l'écolier). Signature : le filet rouge
+   de marge + le papier quadrillé, et la correction au stylo rouge sur
+   l'erreur de connexion. */
+
+:root {
+  --paper: oklch(98% 0.008 240);
+  --paper-grid: oklch(93% 0.02 240);
+  --surface: oklch(99% 0.004 240);
+  --ink: oklch(27% 0.05 255);
+  --muted: oklch(50% 0.03 250);
+  --border: oklch(87% 0.015 240);
+
+  --blue: oklch(46% 0.15 258);
+  --blue-dark: oklch(38% 0.15 258);
+  --blue-ink: oklch(99% 0.005 258);
+  --blue-soft: oklch(93% 0.03 258);
+
+  --red: oklch(55% 0.19 25);
+  --red-soft: oklch(96% 0.03 25);
+  --red-border: oklch(80% 0.09 25);
+
+  --shadow: 0 1px 2px rgba(20, 30, 50, 0.05), 0 8px 20px rgba(20, 30, 50, 0.07);
+}
+
+/* Papier quadrillé + filet de marge rouge, façon cahier Seyès */
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--paper-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  position: relative;
+}
+@media (min-width: 720px) {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 56px;
+    width: 1px;
+    background: var(--red);
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+h1, h2, h3, h4, .brand,
+button, .btn-accent, .btn-pill-outline {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+a {
+  color: var(--blue);
+}
+a:hover {
+  color: var(--blue-dark);
+}
+
+/* Navbar : bandeau de couverture de cahier */
+.navbar-blog {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 28px;
+  background: var(--surface);
+  border-bottom: 2px solid var(--red);
+  box-shadow: 0 1px 0 var(--blue-soft);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.navbar-blog .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.navbar-blog .brand svg {
+  color: var(--blue);
+}
+.navbar-blog .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.navbar-blog .divider {
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+}
+.avatar-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar-chip .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  background: var(--blue);
+  color: var(--blue-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+}
+.avatar-chip .username {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* Boutons */
+.btn-pill-outline {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--blue);
+  background: transparent;
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-pill-outline:hover {
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 4px;
+  border: none;
+  background: var(--blue);
+  color: var(--blue-ink);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.btn-accent:hover {
+  background: var(--blue-dark);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  border-color: var(--red-border);
+  color: var(--red);
+}
+
+/* Champs de formulaire */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.field label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field input,
+.field textarea {
+  height: 44px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  padding: 0 12px;
+  font-size: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--surface);
+  color: var(--ink);
+}
+.field textarea {
+  height: auto;
+  min-height: 130px;
+  padding: 12px;
+  resize: vertical;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+/* Correction au stylo rouge — pas une alerte Bootstrap générique */
+.alert-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--red-soft);
+  border: 1.5px dashed var(--red-border);
+  color: var(--red);
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.alert-error svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Carte de connexion */
+.auth-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+.auth-wrap .inner {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.auth-header .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-header h1 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.auth-header .subtitle {
+  font-size: 13px;
+  color: var(--muted);
+}
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+.auth-footer {
+  text-align: center;
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted);
+}
+.auth-footer a {
+  font-weight: 500;
+}
+
+/* Carte de rédaction : bordure pointillée = brouillon, pas encore "classé" */
+.form-card {
+  background: var(--surface);
+  border: 1.5px dashed var(--blue-soft);
+  border-radius: 6px;
+  padding: 28px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.form-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.form-card-header .title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.form-card-header .subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.form-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed var(--border);
+  padding-top: 18px;
+}
+.form-card-footer .hint {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Grille d'articles : fiches de catalogue avec coin corné */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+.post-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.post-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 18px 18px 0;
+  border-color: transparent var(--paper) transparent transparent;
+  filter: drop-shadow(-1px 1px 1px rgba(20, 30, 50, 0.12));
+}
+.post-card .post-ref {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.post-card .post-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.post-card .post-excerpt {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  flex-grow: 1;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.post-card .post-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+}
+.post-card .post-link:hover {
+  color: var(--blue-dark);
+}
+
+/* ===== Fin ajout Claude ===== */

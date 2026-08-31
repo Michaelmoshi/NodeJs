@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 3 node watcher.js app.js)",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(timeout 2 node watcher.js app.js)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(node app.js)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 29200 //F)",
+      "Bash(curl -s -X POST http://localhost:3000/todos -H \"Content-Type: application/json\" -d '{\"title\":\"test\",\"completed\":false}')"
+    ]
+  }
+}

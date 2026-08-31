@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap">
+  <style>
+    :root{
+      --bg: oklch(97% 0.008 75);
+      --ink: oklch(20% 0.02 75);
+      --muted: oklch(48% 0.015 75);
+      --border: oklch(89% 0.01 75);
+      --accent: oklch(62% 0.16 45);
+      --accent-dark: oklch(52% 0.16 45);
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;height:100%;}
+    body{background:var(--bg);color:var(--ink);font-family:'Work Sans', system-ui, sans-serif;}
+  </style>
+</helmet>
+<div style="padding:48px;display:flex;flex-direction:column;gap:36px;">
+
+  <div>
+    <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:6px;">Variante C</div>
+    <h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-size:22px;font-weight:600;">Navbar minimale</h2>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="font-size:13px;color:var(--muted);">État déconnecté</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 4px;border-bottom:1.5px solid var(--ink);">
+      <span style="font-family:'Newsreader',Georgia,serif;font-size:20px;font-weight:600;">Mon Blog</span>
+      <div style="display:flex;align-items:center;gap:28px;">
+        <span style="font-size:14px;color:var(--muted);">Accueil</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--accent-dark);">
+          Se connecter
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="font-size:13px;color:var(--muted);">État connecté</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 4px;border-bottom:1.5px solid var(--ink);">
+      <span style="font-family:'Newsreader',Georgia,serif;font-size:20px;font-weight:600;">Mon Blog</span>
+      <div style="display:flex;align-items:center;gap:28px;">
+        <span style="font-size:14px;color:var(--muted);">Accueil</span>
+        <span style="font-size:14px;color:var(--ink);">admin</span>
+        <span style="font-size:14px;font-weight:500;color:var(--muted);">Se déconnecter</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
